@@ -1,0 +1,19 @@
+requried technologies for our development
+
+Nodejs and NPM
+mongodb  //mongod --directoryperdb --dbpath c://mongodb/data/db --logpath c://mongodb/log/mongo.log --rest --install --logappend  && net start Mongodb
+git and git-bash
+computer set
+express module
+visual studio code
+
+modules to install
+moment
+express-message
+expres-validator
+connect-flash
+passport
+bower
+ejs
+path
+nodemon

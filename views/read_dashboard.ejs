@@ -1,0 +1,27 @@
+<% include partials/dash_header %>
+
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 ml-auto  ">
+        <div class="row bg-warning p-3 mt-4">
+          
+          <!-- payment and delivery partners-->
+          <div class="col-md-6 mt-3">
+            <H6>READ YOUR INFORMATION</H6>
+              <div class="input-group">
+                  <h3><%= collection.value %> </h3>
+                  <p class="small"><%= collection.url %> </p>
+              </div>
+            
+              <a href="/dashboard/update/<%= collection.name %>/<%= collection._id %>" class="btn btn-info">Edit</a>
+              <a href="#" class="btn btn-danger delete-footer" data-url="/dashboard/delete/<%= collection.name %>/<%= collection._id %> ">Delete</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% include partials/dash_footer %>

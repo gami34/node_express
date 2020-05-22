@@ -1,0 +1,30 @@
+<% include partials/dash_header %>
+
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 ml-auto  ">
+        <div class="row bg-warning p-3 mt-4">
+          
+          <!-- payment and delivery partners-->
+          <div class="col-md-6 mt-3">
+            <H6>UPDATE YOUR INFORMATION</H6>
+            <form method="POST" action="/dashboard/<%= collection.name %>/<%= collection._id %>">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon" value="<%= collection.value %> ">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon" value="<%= collection.url %> ">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% include partials/dash_footer %>

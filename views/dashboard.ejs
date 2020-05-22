@@ -1,0 +1,152 @@
+<% include partials/dash_header %>
+
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 ml-auto  ">
+        <div class="row bg-warning p-3 mt-4">
+          <div class="col-md-12 mb-3">
+            <h5 class="bg-secondary p-2   rounded">Footer Information</h5>
+          </div>
+          <div class="col-md-3">
+            <H6>LET US HELP YOU</H6>
+            <form method="POST" action="/dashboard/help">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <ul class=" nav flex-column">
+              <% help.forEach(hlp => { %>
+                <li class="nav-item">
+                  <a class="nav-link text-dark mr-2" href="/dashboard/help/<%= hlp._id %>"> <strong><%= hlp.value %></strong>  <%= hlp.url %> </a> 
+                </li>
+              <% }) %>
+              </ul>
+          </div>
+
+          <!-- about clossest mallam -->
+          <div class="col-md-3">
+            <H6>ABOUT CLOSEST MALLAM</H6>
+            <form method="POST" action="/dashboard/about">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <ul class=" nav flex-column">
+              <% about.forEach(abt => { %>
+                <li class="nav-item">
+                  <a class="nav-link text-dark mr-2" href="/dashboard/about/<%= abt._id %>"> <strong><%= abt.value %></strong>  <%= abt.url %> </a> 
+                </li>
+              <% }) %>
+              </ul>
+          </div>
+
+          <!-- make money with closest mallam -->
+          <div class="col-md-3">
+            <H6>MAKE MONEY WTIH CLOSEST MALLAM</H6>
+            <form method="POST" action="/dashboard/money">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <ul class=" nav flex-column">
+              <% money.forEach(mny => { %>
+                <li class="nav-item">
+                  <a class="nav-link text-dark mr-2" href="/dashboard/money/<%= mny._id %>"> <strong><%= mny.value %></strong>  <%= mny.url %> </a> 
+                </li>
+              <% }) %>
+              </ul>
+          </div>
+
+          <!-- closest mallam international -->
+          <div class="col-md-3">
+            <H6>CLOSEST MALLAM INTERNATIONAL</H6>
+            <form method="POST" action="/dashboard/international">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <ul class=" nav flex-column">
+              <% international.forEach(inter => { %>
+                <li class="nav-item">
+                  <a class="nav-link text-dark mr-2" href="/dashboard/international/<%= inter._id %>"> <strong><%= inter.value %></strong>  <%= inter.url %> </a> 
+                </li>
+              <% }) %>
+              </ul>
+          </div>
+
+          <!-- Join Us on -->
+          <div class="col-md-3 mt-3">
+            <H6>JOIN US ON</H6>
+            <form method="POST" action="/dashboard/socials">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <ul class=" nav flex-column">
+              <% socials.forEach(social => { %>
+                <li class="nav-item">
+                  <a class="nav-link text-dark mr-2" href="/dashboard/socials/<%= social._id %>"> <strong><%= social.value %></strong>  <%= social.url %> </a> 
+                </li>
+              <% }) %>
+              </ul>
+          </div>
+
+          <!-- payment and delivery partners-->
+          <div class="col-md-3 mt-3">
+            <H6>PAYMENT METHODS AND DELIVERY PARTNERS</H6>
+            <form method="POST" action="/dashboard/paymentndelivery">
+              <div class="input-group">
+                <input class="form-control" type="text" name="value" placeholder="Value..." aria-label="Recipient's " aria-describedby="my-addon">
+                <input class="form-control" type="text" name="url" placeholder="URI..." aria-label="Recipient's " aria-describedby="my-addon">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="my-addon">Add</button>
+                </div>
+              </div>
+            </form>
+
+            <ul class=" nav flex-column">
+              <% paymentndelivery.forEach(payndeliver => { %>
+                <li class="nav-item">
+                  <a class="nav-link text-dark mr-2" href="/dashboard/paymentndelivery/<%= payndeliver._id %>"> <strong><%= payndeliver.value %></strong>  <%= payndeliver.url %> </a> 
+                </li>
+              <% }) %>
+              </ul>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+<% include partials/dash_footer %>
