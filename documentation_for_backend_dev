@@ -12,7 +12,9 @@ moment
 express-message
 expres-validator
 connect-flash
+express-session
 passport
+bscryptjs
 bower
 ejs
 path

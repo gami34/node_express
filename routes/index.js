@@ -10,6 +10,8 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard template */
 router.get('/dashboard/', function(req, res, next) {
+  let errors = req.session.errors; //using the req.session store to pass information securely
+  // console.log(errors)
   HelpSchecma.find({},(err,help)=>{
     if (err) {
       console.log(err)
@@ -34,7 +36,7 @@ router.get('/dashboard/', function(req, res, next) {
                         if (err) {
                           console.log(err)
                         } else {
-                          return res.render('dashboard',{help,about,money,international,socials,paymentndelivery})
+                          return res.render('dashboard',{help,about,money,international,socials,paymentndelivery,errors})
                         }
                       })
                     }
@@ -58,7 +60,9 @@ router.post('/dashboard/:collection',[
   let errors = validationResult(req)
 
   if (!errors.isEmpty()) {
-    return res.status(422).render('dashboard',{title:'Dashboard', errors:errors.array()})
+    req.session.errors = errors.array()
+    // return res.status(422).render('dashboard',{title:'Dashboard', errors:errors.array()})
+    return res.redirect('/dashboard')
   } else {
     collection_name = 'help'==req.params.collection ? 'help': 'about'==req.params.collection ? 'about' : 'money'==req.params.collection ? 'money' : 'international'==req.params.collection ? 'international' : 'socials'==req.params.collection ? 'socials' : 'paymentndelivery'==req.params.collection ? 'paymentndelivery' : null ;
     
@@ -83,7 +87,8 @@ router.post('/dashboard/:collection',[
       if (err) {
         console.log(err)
       } else {
-        res.redirect('/dashboard')
+        req.flash('success','Sucessfully Saved')
+        res.status(422).edirect('/dashboard')
       }
     })
   }
@@ -114,7 +119,7 @@ router.get('/dashboard/:collection/:id', function(req, res, next) {
 
 // get a single update page for the elecment by ID
 router.get('/dashboard/update/:collection/:id', function(req, res, next) {
-  
+  let errors = req.session.errors;
   collection_name = 'help'==req.params.collection ? 'help': 'about'==req.params.collection ? 'about' : 'money'==req.params.collection ? 'money' : 'international'==req.params.collection ? 'international' : 'socials'==req.params.collection ? 'socials' : 'paymentndelivery'==req.params.collection ? 'paymentndelivery' : null ;
   
   collections = {
@@ -130,7 +135,7 @@ router.get('/dashboard/update/:collection/:id', function(req, res, next) {
     if (err) {
       console.log(err)
     } else {
-      return res.render('update_dashboard',{title:'Edit Dashboard',collection})
+      return res.render('update_dashboard',{title:'Edit Dashboard',collection, errors})
     }
   })
 });
@@ -138,12 +143,13 @@ router.get('/dashboard/update/:collection/:id', function(req, res, next) {
 // posting the data for updating a single element by ID
 router.post('/dashboard/:collection/:id',[
   check('value','The The value field is empty').not().isEmpty(),
-  check('url','The URL field is empty').not().isEmpty()
+  check('url','The URL field for update is empty').not().isEmpty()
 ], function(req, res, next) {
   let errors = validationResult(req)
 
   if (!errors.isEmpty()) {
-    return res.status(422).render('dashboard',{title:'Dashboard', errors:errors.array()})
+    req.session.errors = errors.array();
+    return res.status(422).redirect('/dashboard/update/'+req.params.collection+'/'+req.params.id)
   } else {
     collection_name = 'help'==req.params.collection ? 'help': 'about'==req.params.collection ? 'about' : 'money'==req.params.collection ? 'money' : 'international'==req.params.collection ? 'international' : 'socials'==req.params.collection ? 'socials' : 'paymentndelivery'==req.params.collection ? 'paymentndelivery' : null ;
     
@@ -170,6 +176,7 @@ router.post('/dashboard/:collection/:id',[
       if (err) {
         console.log(err)
       } else {
+        req.flash('success','Successfully Updated')
         return res.redirect('/dashboard')
       }
     })
@@ -200,6 +207,7 @@ router.delete('/dashboard/delete/:collection/:id', function(req, res, next) {
     if (err) {
       console.log(err)
     } else {
+      req.flash('success','Info successfully deleted')
       return res.send('Success')
     }
   });

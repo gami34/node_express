@@ -5,7 +5,22 @@
     <div class="row">
       <div class="col-md-10 ml-auto  ">
         <div class="row bg-warning p-3 mt-4">
+          
           <div class="col-md-12 mb-3">
+            <%- messages('message', locals) %>
+            <% if (errors) { %>
+              <% errors.forEach(function (error) { %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                  </button>
+                  <strong><%= error.msg %></strong> You should check in on the fields below.
+                </div>
+             <% }) %>
+            <% } %>
+
+             
             <h5 class="bg-secondary p-2   rounded">Footer Information</h5>
           </div>
           <div class="col-md-3">
